@@ -74,4 +74,3 @@ Feel free to:
 - 🔄 Azure Text Analytics API integration for dynamic term recognition  
 - 💻 GUI or web form interface for real-time EHR text simplification  
 - 📊 Flesch-Kincaid readability scoring and feedback  
-
