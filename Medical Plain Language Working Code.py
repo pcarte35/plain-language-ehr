@@ -1,9 +1,13 @@
-
 import os
 import re
 import sys
 import argparse
+import json
 from datetime import datetime
+
+# Load dictionary from external JSON file
+with open("plain_language_dictionary.json", "r", encoding="utf-8") as f:
+    terms = json.load(f)
 
 def in_notebook():
     try:
@@ -11,16 +15,6 @@ def in_notebook():
         return True
     except NameError:
         return False
-
-# CDC thesaurus: simplified for demo
-terms = {
-    "hypertension": ["high blood pressure"],
-    "dyspnea": ["shortness of breath", "difficulty breathing"],
-    "febrile": ["feverish", "caused by a fever"],
-    "utilize": ["use"],
-    "abdomen": ["stomach", "belly", "tummy"]
-    # Add more terms as needed
-}
 
 def simplify(text):
     for term, synonyms in terms.items():
@@ -92,7 +86,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 
