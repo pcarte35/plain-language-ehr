@@ -1,66 +1,71 @@
-# 🩺🥼💉 Medical Plain Language Simplifier
 
-This Python script simplifies complex medical text into plain language using **rule-based logic** and a curated **medical thesaurus**. It is designed to support projects aimed at improving patient understanding and reducing barriers caused by **low health literacy**.
+# 🩺 Medical Text Simplifier – WCAG 2.2 Compliant
 
-This repository supports a research initiative focused on health literacy improvement by translating dense medical language into accessible terms. While the current version uses Python-based string processing and pattern matching, future expansion includes leveraging **Artificial Intelligence (AI)** and **Natural Language Processing (NLP)** for more dynamic and context-aware simplification.
-
----
-
-## 🧠 What the Code Does
-
-The script performs the following:
-- Loads a **CDC-inspired thesaurus** of complex-to-plain medical terms
-- Applies a series of **language simplification rules** to:
-  - Convert medical jargon into everyday language
-  - Replace passive voice with active voice
-  - Eliminate redundancy and complex phrases
-  - Format longer sentences into clearer chunks
-- Processes sample sentences and outputs simplified results
+This project is a **rule-based medical language simplifier** that converts complex clinical language into **plain, accessible language**. It wraps simplified terms in semantic HTML with tooltips to meet **WCAG 2.2 accessibility guidelines**.
 
 ---
 
-## ▶️ How to Use It
+## ✅ What the Code Does
 
-### 1. Install Python  
-Ensure you are running **Python 3.6+**
+- **Loads a CDC-inspired thesaurus** of complex medical terms and their plain-language equivalents.
+- Scans any clinical text and replaces complex terms with simpler synonyms.
+- **Wraps replacements in `<abbr>` tags** with `aria-describedby` and tooltips to assist screen readers.
+- Generates a fully accessible, clean **HTML file** showing both the original and simplified versions of the text.
 
-### 2. Run the Script  
-Save the script as `plain_language_simplifier.py` and run:
+---
+
+## 💡 How to Use It
+
+You can run the script from your terminal or command line using Python.
+
+### 🔹 Option 1: Use a text file
 
 ```bash
-python plain_language_simplifier.py
+python medical_text_simplifier.py -i input.txt -o output.html
 ```
 
-### 3. Customize Your Input  
-Modify the `example_sentences` list in the script with your own text samples to test simplification output.
+- `-i`: Path to your input medical text file.
+- `-o`: Path to save the accessible output HTML file.
+
+### 🔹 Option 2: Paste text interactively
+
+```bash
+python medical_text_simplifier.py -o output.html
+```
+
+- You’ll be prompted to paste or type in your text.
+- Press **Enter twice** to finish input.
 
 ---
 
-## 📚 Dataset / Model Used
+## 📚 Dataset or Model Used
 
-### 🔹 Plain Language Thesaurus
-The embedded thesaurus (`cdc_thesaurus`) is based on terminology adapted from the **CDC’s Plain Language Thesaurus**, covering a wide range of medical and healthcare-specific terms.
-
-### 🔹 Rule-Based NLP Logic
-The script uses custom **regular expressions** and **substitution rules** to support:
-- ✅ Grammar refinement  
-- ✅ Medical term translation  
-- ✅ Jargon removal  
-- ✅ Readability improvements  
-
-> This version **does not require a machine learning model or external API**, ensuring fast, offline usage and full transparency.
+- This tool uses a **custom-built medical plain language dictionary** adapted from the **CDC’s Plain Language Thesaurus for Health Communications**.
+- No AI model or machine learning is used — it's a **deterministic, rule-based system** for maximum clarity and reproducibility.
 
 ---
 
-## 🧪 Example Output
+## 🧪 Example
 
-```text
-Original: The patient was diagnosed with hypertension and requires antihypertensive therapy.
-Simplified: The patient is diagnosed with high blood pressure.
-
-Original: The treatment should be initiated in order to ameliorate the patient's condition.
-Simplified: The treatment should be started to improve the patient's condition.
+**Input**:
 ```
+The patient was febrile and complained of dyspnea. Antihypertensive therapy was initiated.
+```
+
+**Output (HTML)**:
+> The patient was  
+> `<abbr title="feverish, caused by a fever">feverish</abbr>`  
+> and complained of  
+> `<abbr title="shortness of breath, difficulty breathing">shortness of breath</abbr>`...
+
+---
+
+## 📁 Want to Contribute?
+
+Feel free to:
+- Expand the thesaurus (`terms`) with more terms and synonyms
+- Add support for PDF export or JSON output
+- Submit PRs for performance or accessibility improvements
 
 ---
 
@@ -70,4 +75,3 @@ Simplified: The treatment should be started to improve the patient's condition.
 - 💻 GUI or web form interface for real-time EHR text simplification  
 - 📊 Flesch-Kincaid readability scoring and feedback  
 
----
